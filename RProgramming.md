@@ -76,6 +76,7 @@ By the end of week 1 you should be able to:
 
 
 > x <- vector("numeric", length = 10)
+
 > x
  [1] 0 0 0 0 0 0 0 0 0 0
 
@@ -87,16 +88,20 @@ By the end of week 1 you should be able to:
 > x <- 0:6
 
 > class(x)
- [1] "integer"
+
+> [1] "integer"
  
 > as.numeric(x)
- [1] 0 1 2 3 4 5 6
+
+> [1] 0 1 2 3 4 5 6
  
 > as.logical(x)
- [1] FALSE TRUE TRUE TRUE TRUE TRUE TRUE
+
+> [1] FALSE TRUE TRUE TRUE TRUE TRUE TRUE
  
  > as.character(x)
- [1] "0" "1" "2" "3" "4" "5" "6"
+ 
+> [1] "0" "1" "2" "3" "4" "5" "6"
  
  
 * nonsensical coercion results in *NA*
@@ -108,49 +113,76 @@ By the end of week 1 you should be able to:
  
 
 > m <- matrix(nrow=2, ncol=3)
+
 > m 
-    [,1] [,2] [,3]
-[,1] NA   NA    NA
-[,2] NA   NA    NA
+
+>    [,1] [,2] [,3]
+    
+> [,1] NA   NA    NA
+
+> [,2] NA   NA    NA
+
 
 > dim(m)
-  [1] 2 3 ##The first interger is the number of rows, the second is the number of columns
+
+>  [1] 2 3 ##The first interger is the number of rows, the second is the number of columns
+  
 
 > attributes(m)
-  $dim
-  [1] 2 3
+
+>  $dim
+ 
+>  [1] 2 3
 
 
 * matrices are construbed column-wise, entries start in the upper left and run down the columns
 
 > m <- matrix(1:6, nrow=2, ncol=3)
+
 > m 
-    [,1] [,2] [,3]
-[,1] 1    3     5
-[,2] 2    4     6
+
+>    [,1] [,2] [,3]
+
+> [,1] 1    3     5
+
+> [,2] 2    4     6
 
 
 * can create a matrix out of a vector by assigning it a dimension attribute
 
 > m <- 1:10
+
 >m
-  [1] 1 2 3 4 5 6 7 8 9 10
+ 
+ > [1] 1 2 3 4 5 6 7 8 9 10
+
 > dim(m) <- c(2, 5)
+
 > m 
-    [,1] [,2] [,3] [,4] [,5]
-[,1] 1    3     5   7     9
-[,2] 2    4     6   8     10
+
+>     [,1] [,2] [,3] [,4] [,5]
+
+> [,1] 1    3     5   7     9
+
+> [,2] 2    4     6   8     10
+
 
 * can also create a matrix through the functions cbind() and rbind()
 
  
 > x <- 1:3
+
 > y <- 10:12
+
 > cbind(x, y)
-        x y
-  [1,]  1 10
-  [2,]  2 11
-  [3,]  3 12
+
+>        x y
+
+>  [1,]  1 10
+
+>  [2,]  2 11
+
+>  [3,]  3 12
 
 
 *rbind combines them as rows instead of columns
@@ -179,30 +211,49 @@ By the end of week 1 you should be able to:
 * data.frame() can also create a data frame
 
 > x <- data.frame(foo=1:4, bar+c(T, T, F, F))
+
 > x
-    foo   bar
-  1   1   TRUE
-  2   2   TRUE
-  3   3   FALSE
-  4   4   FALSE
+
+>    foo   bar
+
+>  1   1   TRUE
+
+>  2   2   TRUE
+
+>  3   3   FALSE
+
+>  4   4   FALSE
+
 > nrow(x)
-  [1] 4
+
+>  [1] 4
+
 > ncol(x)
-  [1] 2
+
+>  [1] 2
 
 
 ##Names Attributes
 * can add names to each element of a vector
 
 > x <- 1:3
+
 > names(x)
-  NULL
+
+>  NULL
+
+
 > names(x)<- c("foo", "bar", "norf")
+
 > x
-  foo   bar   norf
-    1     2     3
+
+>  foo   bar   norf
+
+>    1     2     3
+
 > names(x)
-  [1] "foo" "bar" "norf"
+
+>  [1] "foo" "bar" "norf"
 
 * lists can have names x<-list(a=1, b=2, c=3) gives the names a, b, c to the elements
 * matrices can have names (dim names)
@@ -242,9 +293,13 @@ By the end of week 1 you should be able to:
   * same if all columns are the same class (ie colClasses = "numeric")
   * If not, you can use this to have R figure it out based on the first 100 rows and then apply it to the original
  
+
   > initial <- read.table("datatable.txt", nrows = 100)
+ 
   > classes <- sapply(initial, class)
+ 
   > tabAll <- read.table("datatable.txt", colClasses = classes)
+
 
   * set nrows (overestimation is okay, won't make it faster but does help with memory usage)
 * to estimate how much memory is required to store the dataset multiply rows x columns (to get how many items are in the dataframe) if they are all the same (ie numeric) multiply that number by the bytes (8 bytes/numeric) divide by 2^20 (to get MB)divide that again by 2^10 to get GB (you need about twice as much as this says to do all the extra processing)
@@ -266,7 +321,8 @@ By the end of week 1 you should be able to:
   * url (opens a connection to a webpage) 
 
 > string(file)
-  function (description = "", open = "", blocking = TRUE, encoding = getOption("encoding"))
+ 
+>  function (description = "", open = "", blocking = TRUE, encoding = getOption("encoding"))
 
   * description is the name of the file
   * open is a code indicating:
@@ -296,20 +352,32 @@ By the end of week 1 you should be able to:
 ##Subsetting R Objects: Lists
 
 > x <- list(foo=1:4, bar=0.6)
+
 > x[1] ##This returns a list because the single bracket always returns the same class as the original
-  $foo
-  [1] 1 2 3 4
+
+>  $foo
+
+>  [1] 1 2 3 4
+
 
 > x[[1]] ##This is just the sequence rather than a list
-  [1] 1 2 3 4
+ 
+ > [1] 1 2 3 4
+ 
   
 > x$bar ##This gives the element associated with the name "bar"
-  [1] 0.6
+
+>  [1] 0.6
+
 > x[["bar"]] ##This is basically the same
-  [1] 0.6
+
+>  [1] 0.6
+
 > x["bar"] ##This gives the list with the element including what you requested
-  $bar
-  [1] 0.6
+
+>  $bar
+
+>  [1] 0.6
 
 * the [[ operator can be computed with indices - $ can only be used with literal names
   * ie, if you made name <- "foo" you could [[name]] and it would return those associated with foo, but $name would return NULL 
@@ -323,21 +391,34 @@ By the end of week 1 you should be able to:
 * can identify with [[ and $
 
 > x <- list(aardvark = 1:5)
+
 > x$a
-  [1] 1 2 3 4 5
+
+>  [1] 1 2 3 4 5
+
 > x[["a"]]
-  NULL
+
+>  NULL
+
 > x[["a", exact=FALSE]]
-  [1] 1 2 3 4 5
+
+>  [1] 1 2 3 4 5
 
 ##Removing NA Values
 
 > x <- c(1, 2, NA, 4, NA, 5)
+
 > bad <- is.na(x)
+
+
 > bad
-  FALSE FALSE TRUE  FALsE  TRUE  FALSE
+
+>  FALSE FALSE TRUE  FALsE  TRUE  FALSE
+
+
 > x[!bad]
-  [1] 1 2 4 5
+
+>  [1] 1 2 4 5
 
 * complete.cases(x,y) only takes the cases where there are no missing values in a row
 
