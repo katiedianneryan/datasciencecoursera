@@ -421,33 +421,3 @@ By the end of week 1 you should be able to:
 >  [1] 1 2 4 5
 
 * complete.cases(x,y) only takes the cases where there are no missing values in a row
-
-##
-* 
-* 
-* 
-
-##
-* 
-* 
-* 
-
-##
-* 
-* 
-* 
-
-##
-* 
-* 
-* 
-
-##
-* 
-* 
-* 
-
-##
-* 
-* 
-* 
