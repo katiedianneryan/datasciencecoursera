@@ -1,4 +1,4 @@
-#Week One
+#Week Two
 ###Learning Objectives
 By the end of this week you should be able to:
 - Write an if-else expression
@@ -25,39 +25,98 @@ By the end of this week you should be able to:
 * You can also combine multiple conditions with else if (condition2)
 
 
-> if(x>3) {
+    > if(x>3) {
 
->       y <- 10
+        > y <- 10
 
-> } else {
+    > } else {
 
->       y <- 0
+        > y <- 0
 
-> }
+    > }
 
 OR YOU CAN ALSO DO THIS:
 
 
-> y <- if(x>3) {
+    > y <- if(x>3) {
 
->       10
+      > 10
 
-> } else {
+    > } else {
 
->       0
+      > 0
 
-> }
+    > }
 
 * do not always need else function, can just test and have a single result
 
-##
-* 
-* 
-* 
+##For Loops
+* most common type of loop
+* loop index (typically called i, might be j, k, l, etc if you have multiple)
 
-##
-* 
-* 
+
+    > x <- c("a", "b", "c", "d")
+
+    > for(i in 1:4) {    ##creates an index (i) of numbers 1 through 4
+
+       > print(x[i])   ##prints the element of x that corresponds with the index
+
+    > } 
+
+OR YOU CAN ALSO DO THIS:
+
+
+    > for(i in seq_along(x)) {    ##creates a integer sequence that is the same length as the vector x (doesn't require you to know the length)
+
+        > print(x[i])
+
+    > } 
+
+OR YOU CAN ALSO DO THIS:
+
+
+    > for(letter in x) {        ##takes values from the vector itself
+
+        > print(letter)
+
+    > } 
+
+OR YOU CAN DO THIS ALSO:
+
+
+    > for(i in 1:4) print(x[i])     ##if the for loop only has a single loop you don't actually need the curly brackets
+
+
+* for loops can be nested (generally don't nest more than 2-3 levels, though, or it gets confusing fast)
+
+
+    > x <- matrix(1:6, 2, 3)
+
+    > for(i in seq_len(nrow(x))) {    ##loops over rows, then loops over columns
+
+      > for(j in seq_len(ncol(x)))  {
+
+        > print(x[i,k])
+
+    > } 
+
+* seq_len aka seq_lense the idea is that it takes an interger (aka the number of rows in x) and makes a sequence out of that
+
+##While loops
+* begins by testing a condition (like if/else) and then executes the loop
+* once the loop is executed the condition is tested again and continues to run until it fulfils the conditions
+ 
+
+    > count <- 0
+
+    > while(count < 10) {
+
+       > print(count)
+
+            > count <- count+1
+
+> }
+
 * 
 
 ##
