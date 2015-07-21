@@ -115,30 +115,67 @@ OR YOU CAN DO THIS ALSO:
 
             > count <- count+1
 
-> }
+    > }
 
-* 
-
-##
-* 
-* 
+* Be very careful. Improperly written while loops can result in infinite looping!
+* You can test multiple conditions
 * 
 
-##
-* 
-* 
-* 
+z <- 5
 
-##
-* 
-* 
-* 
+    while(z>=3 && z<=10) {
+    print(z)
+    coin <- rbinom(1, 1, 0.5)
+    
+    if(coin==1) {
+        z <- z+1
+    } else {
+        z <- z-1
+    }
+}
+  
+##Repeat, Next, Break
+* Repeat initiates an infinite loop (not commonly used)
+* Break is the only way to exit this infinite loop
+* Next is used in any looping construct when you want to skip iterations
 
 
-##
-* 
-* 
-* 
+    for(i in 1:100) {
+    if(i <=20) {
+      next
+    }
+    j<- i+1
+    print(j)
+  }
+  
+* Return signals that a function should exit and return a given value
+
+##Your First R Function
+* Write it in a text file
+* see "yourFirstRFunction.r" in rStudio for other notes from thi section
+
+##Functions
+* stored as R objects
+* functions in R are treated as "first class object" therefore you can use them just like other objects
+* this includes passing functions to other fuctions as arguments or nesting 
+* functions have *named arguments* which can have default values
+  * *formal arguments* are those arguments included in the function definition
+  * the **formals** function returns a list of all the formal arguments in a function
+  * Not every function can in R makes use of all the formal argument
+  * function arguments can be missing, or might have default values
+* with arguments, it checks for an exact match for a named argument, then a partial match, then a positional match
+* when you define a function you should name all of the arguments and set defaults (TRUE, FALSE, NULL) if appropriate
+* arguments are only evaluated if it has to.
+* the "..." argument - a variable number of elements that can be passed on to other functions - this is handy if you want t tweak a default function in r!
+    myplot <- function(x, y, type = "1", ...) {
+      plot(x, y, type=type, ...) }
+
+ * make sure that anything after ... that you want changed much be naed explicitely
+ 
+##Symbol Binding
+* R automatically searches the environments in R for a symbol name matching the one requested
+* If not, it searches the namespaves of each of the package on the search list
+* You can see this with the search function
 
 ##
 * 
